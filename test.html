@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <form method="post" id="fff">
+
+        <input name="first" type="text" data-text="text">
+        <textarea name="firstArea" cols="20" rows="5" data-text="text"></textarea>
+        <input type="checkbox" name="checkboxFirst" value="1" data-text="checkbox">1
+        <input type="checkbox" name="checkboxFirst" value="2" data-text="checkbox">2
+        <input type="checkbox" name="checkboxSecond" value="3" data-text="checkbox">3
+        <input type="checkbox" name="checkboxSecond" value="4" data-text="checkbox">4
+        <select name="selectFirst" data-text="select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <input type="radio" name="radioFisrt" value="1" data-text="radio">1
+        <input type="radio" name="radioFisrt" value="2" data-text="radio">2
+        <input type="radio" name="radioSecond" value="3" data-text="radio">3
+        <input type="radio" name="radioSecond" value="4" data-text="radio">4
+        <button onclick="getValue();">确定</button>
+    </form>
+</div>
+</body>
+<script src="jquery-1.11.3.min.js"></script>
+<script src="jForm.values.min.js"></script>
+<!--<script src="main.min.js"></script>-->
+<script>
+    $(function(){
+        getValue();
+        function getValue(){
+            var json={first:"11",firstArea:"22",checkboxFirst:[1],checkboxSecond:[4],selectFirst:3,radioFisrt:2,radioSecond:2};
+            forms.resetValues("fff",json);
+        }
+    });
+
+
+</script>
+</html>
