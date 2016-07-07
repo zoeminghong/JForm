@@ -1,7 +1,7 @@
 forms = {
     values: function (formName) {
         var value = {};
-        var radioName = '';
+        //var radioName = '';
         $("#" + formName).find("[data-text='text']").each(function (index, domEle) {
             var name = $(domEle).attr("name");
             value[name] = $(domEle).val();
@@ -34,7 +34,7 @@ forms = {
             }
             //alert(value[name]);
         });
-        //alert(value);
+       return value;
     },
     resetValues: function (formName, data) {
         $("#" + formName).find("[data-text]").each(function (index, domEle) {

@@ -6,8 +6,7 @@
 </head>
 <body>
 <div>
-    <form method="post" id="fff">
-
+    <form method="post" id="formDemo">
         <input name="first" type="text" data-text="text">
         <textarea name="firstArea" cols="20" rows="5" data-text="text"></textarea>
         <input type="checkbox" name="checkboxFirst" value="1" data-text="checkbox">1
@@ -28,16 +27,27 @@
 </div>
 </body>
 <script src="jquery-1.11.3.min.js"></script>
-<script src="jForm.values.min.js"></script>
+<script src="jForm.values.js"></script>
 <!--<script src="main.min.js"></script>-->
 <script>
-    $(function(){
-        getValue();
-        function getValue(){
-            var json={first:"11",firstArea:"22",checkboxFirst:[1],checkboxSecond:[4],selectFirst:3,radioFisrt:2,radioSecond:2};
-            forms.resetValues("fff",json);
+    $(function () {
+        setValue();
+        function setValue() {
+            var json = {
+                first: "11",
+                firstArea: "22",
+                checkboxFirst: [1],
+                checkboxSecond: [4],
+                selectFirst: 3,
+                radioFisrt: 2,
+                radioSecond: 2
+            };
+            forms.resetValues("formDemo", json);
         }
     });
+    function getValue(){
+        console.log(forms.values("formDemo"));
+    }
 
 
 </script>
