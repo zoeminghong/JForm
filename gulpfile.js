@@ -8,21 +8,19 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     del = require('del');
 gulp.task('minifycss', function() {
-    return gulp.src('./*.css')      //Ñ¹ËõµÄÎÄ¼ş
-        .pipe(gulp.dest('minified/css'))   //Êä³öÎÄ¼ş¼Ğ
-        .pipe(minifycss());   //Ö´ĞĞÑ¹Ëõ
+    return gulp.src('./*.css')      //å‹ç¼©çš„æ–‡ä»¶
+        .pipe(gulp.dest('minified/css'))   //è¾“å‡ºæ–‡ä»¶å¤¹
+        .pipe(minifycss());   //æ‰§è¡Œå‹ç¼©
 });
 gulp.task('minifyjs', function() {
     return gulp.src('src/*.js')
-        .pipe(concat('jForm.values.js'))    //ºÏ²¢ËùÓĞjsµ½main.js
-        .pipe(gulp.dest('minified/js'))    //Êä³ömain.jsµ½ÎÄ¼ş¼Ğ
-        .pipe(rename({suffix: '.min'}))   //renameÑ¹ËõºóµÄÎÄ¼şÃû
-        .pipe(uglify())    //Ñ¹Ëõ
-        .pipe(gulp.dest('minified/js'));  //Êä³ö
+        .pipe(concat('jForm.values.js'))    //åˆå¹¶æ‰€æœ‰jsåˆ°main.js
+        .pipe(gulp.dest('minified/js'))    //è¾“å‡ºmain.jsåˆ°æ–‡ä»¶å¤¹
+        .pipe(rename({suffix: '.min'}))   //renameå‹ç¼©åçš„æ–‡ä»¶å
+        .pipe(uglify())    //å‹ç¼©
+        .pipe(gulp.dest('minified/js'));  //è¾“å‡º
 });
 gulp.task('clean', function(cb) {
-    del(['minified/css', 'minified/js'], cb)
+    del(['minified/css', 'minified/js','minified'], cb)
 });
-gulp.task('default', ['minifyjs'], function() {
-    gulp.start('minifycss', 'minifyjs');
-});
+gulp.task('default', ['clean','minifyjs']);
