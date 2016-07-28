@@ -12,15 +12,14 @@ gulp.task('minifycss', function() {
         .pipe(gulp.dest('minified/css'))   //输出文件夹
         .pipe(minifycss());   //执行压缩
 });
-gulp.task('minifyjs', function() {
-    return gulp.src('src/*.js')
-        .pipe(concat('jForm.values.js'))    //合并所有js到main.js
+gulp.task('minifyjs',['clean'], function() {
+    return gulp.src('./jForm.values.js')
         .pipe(gulp.dest('minified/js'))    //输出main.js到文件夹
         .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
         .pipe(uglify())    //压缩
         .pipe(gulp.dest('minified/js'));  //输出
 });
-gulp.task('clean', function(cb) {
-    del(['minified/css', 'minified/js','minified'], cb)
+gulp.task('clean', function() {
+    del(['minified/css', 'minified/js','minified'])
 });
-gulp.task('default', ['clean','minifyjs']);
+gulp.task('default', ['minifyjs']);
